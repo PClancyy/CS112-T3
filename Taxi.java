@@ -1,6 +1,6 @@
 /**
  * A taxi is able to carry a single passenger.
- * 
+ *
  * @author David J. Barnes and Michael Kölling
  * @version 2016.02.29
  */
@@ -8,7 +8,8 @@
 public class Taxi extends Vehicle
 {
     private Passenger passenger;
-    
+    private double taxiId;
+
     /**
      * Constructor for objects of class Taxi
      * @param company The taxi company. Must not be null.
@@ -18,8 +19,9 @@ public class Taxi extends Vehicle
     public Taxi(TaxiCompany company, Location location)
     {
         super(company, location);
+        taxiId = Math.random();
     }
-    
+
     /**
      * Carry out a taxi's actions.
      */
@@ -53,7 +55,7 @@ public class Taxi extends Vehicle
     {
         return getTargetLocation() == null && passenger == null;
     }
-    
+
     /**
      * Receive a pickup location. This becomes the
      * target location.
@@ -63,7 +65,7 @@ public class Taxi extends Vehicle
     {
         setTargetLocation(location);
     }
-    
+
     /**
      * Receive a passenger.
      * Set their destination as the target location.
@@ -83,13 +85,13 @@ public class Taxi extends Vehicle
         passenger = null;
         clearTargetLocation();
     }
-    
+
     /**
      * Return details of the taxi, such as where it is.
      * @return A string representation of the taxi.
      */
     public String toString()
     {
-        return "Taxi at " + getLocation();
+        return "Taxi " + taxiId + " at " + getLocation();
     }
 }
